@@ -1,5 +1,6 @@
 package com.example.android.sunshine.app;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.ArrayAdapter;
@@ -12,9 +13,11 @@ import org.json.JSONException;
 public class FetchWeatherTask extends AsyncTask<String, Void, String[]> {
     private final String LOG_TAG = FetchWeatherTask.class.getSimpleName();
 
+    private Context context;
     private ArrayAdapter<String> mForecastAdapter;
 
-    public FetchWeatherTask(ArrayAdapter mForecastAdapter) {
+    public FetchWeatherTask(Context context, ArrayAdapter mForecastAdapter) {
+        this.context = context;
         this.mForecastAdapter = mForecastAdapter;
     }
 
@@ -28,7 +31,7 @@ public class FetchWeatherTask extends AsyncTask<String, Void, String[]> {
         String forecastJsonStr = ForecastService.getDaily(params[0], numDays);
 
         try {
-            return ForecastUtil.getWeatherDataFromJson(forecastJsonStr, numDays);
+            return ForecastUtil.getWeatherDataFromJson(context, forecastJsonStr, numDays);
         } catch (JSONException e) {
             Log.e(LOG_TAG, e.getMessage(), e);
             e.printStackTrace();
