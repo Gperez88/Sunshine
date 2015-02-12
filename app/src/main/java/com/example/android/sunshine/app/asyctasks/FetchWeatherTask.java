@@ -1,9 +1,12 @@
-package com.example.android.sunshine.app;
+package com.example.android.sunshine.app.asyctasks;
 
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.ArrayAdapter;
+
+import com.example.android.sunshine.app.services.ForecastService;
+import com.example.android.sunshine.app.utils.ForecastUtil;
 
 import org.json.JSONException;
 

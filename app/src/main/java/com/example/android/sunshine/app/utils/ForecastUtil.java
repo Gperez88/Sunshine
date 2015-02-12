@@ -1,9 +1,11 @@
-package com.example.android.sunshine.app;
+package com.example.android.sunshine.app.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.util.Log;
+
+import com.example.android.sunshine.app.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;

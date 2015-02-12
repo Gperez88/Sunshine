@@ -1,4 +1,4 @@
-package com.example.android.sunshine.app;
+package com.example.android.sunshine.app.fragments;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,6 +14,10 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.example.android.sunshine.app.asyctasks.FetchWeatherTask;
+import com.example.android.sunshine.app.R;
+import com.example.android.sunshine.app.activities.DetailActivity;
 
 import java.util.ArrayList;
 
