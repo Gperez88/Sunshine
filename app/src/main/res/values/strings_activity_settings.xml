@@ -1,10 +1,11 @@
 <resources>
     <string name="title_activity_settings">Settings</string>
+
+    <string name="pref_location_key" translatable="false">location</string>
     <string name="pref_location_label">Location</string>
     <string name="pref_location_default" translatable="false">94043</string>
-    <string name="pref_location_key" translatable="false">location</string>
-    <string name="pref_temperature_key">pref_temperature_key</string>
 
+    <string name="pref_units_key">pref_units_key</string>
     <string name="pref_units_label">Temperature Units</string>
     <string name="pref_units_imperial">I</string>
     <string name="pref_units_metric">M</string>

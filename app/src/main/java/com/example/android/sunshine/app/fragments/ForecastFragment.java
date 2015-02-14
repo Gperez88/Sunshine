@@ -15,9 +15,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.example.android.sunshine.app.asyctasks.FetchWeatherTask;
 import com.example.android.sunshine.app.R;
 import com.example.android.sunshine.app.activities.DetailActivity;
+import com.example.android.sunshine.app.asyctasks.FetchWeatherTask;
 
 import java.util.ArrayList;
 
@@ -25,7 +25,6 @@ import java.util.ArrayList;
  * Created by GPEREZ on 2/4/2015.
  */
 public class ForecastFragment extends Fragment {
-
     private ArrayAdapter<String> mForecastAdapter;
 
     public ForecastFragment() {
@@ -34,7 +33,6 @@ public class ForecastFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setHasOptionsMenu(true);
     }
 
