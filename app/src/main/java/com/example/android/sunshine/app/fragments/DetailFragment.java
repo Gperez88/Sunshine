@@ -24,7 +24,6 @@ public class DetailFragment extends Fragment {
 
     private static final String FORECAST_SHARE_HASHTAG = "#SunshimeApp";
     private String mForecastStr;
-    private ShareActionProvider mShareActionProvider;
 
     public DetailFragment() {
     }
@@ -48,34 +47,17 @@ public class DetailFragment extends Fragment {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_share) {
-            if(mShareActionProvider != null){
-                mShareActionProvider.setShareIntent(createShareForecastIntent());
-            }else{
-                Log.d(LOG_TAG, "Share Action Provider is null?");
-            }
-
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         inflater.inflate(R.menu.detailfragment, menu);
 
         MenuItem menuItem = menu.findItem(R.id.action_share);
 
-        mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(menuItem);
+        ShareActionProvider mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(menuItem);
+        if(mShareActionProvider != null){
+            mShareActionProvider.setShareIntent(createShareForecastIntent());
+        }else{
+            Log.d(LOG_TAG, "Share Action Provider is null?");
+        }
     }
 
     private Intent createShareForecastIntent(){
