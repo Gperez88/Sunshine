@@ -17,7 +17,7 @@ import android.widget.ListView;
 
 import com.example.android.sunshine.app.R;
 import com.example.android.sunshine.app.activities.DetailActivity;
-import com.example.android.sunshine.app.asyctasks.FetchWeatherTask;
+import com.example.android.sunshine.app.tasks.FetchWeatherTask;
 
 import java.util.ArrayList;
 
