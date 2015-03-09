@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.android.sunshine.app.R;
 import com.example.android.sunshine.app.data.WeatherContract;
+import com.example.android.sunshine.app.fragments.ForecastFragment;
 import com.example.android.sunshine.app.utils.ForecastUtil;
 
 /**
@@ -42,11 +43,11 @@ public class ForecastAdapter extends CursorAdapter {
         int idx_short_desc = cursor.getColumnIndex(WeatherContract.WeatherEntry.COLUMN_SHORT_DESC);
 
         String highAndLow = formatHighLows(
-                cursor.getDouble(idx_max_temp),
-                cursor.getDouble(idx_min_temp));
+                cursor.getDouble(ForecastFragment.COL_WEATHER_MAX_TEMP),
+                cursor.getDouble(ForecastFragment.COL_WEATHER_MIN_TEMP));
 
-        return ForecastUtil.formatDate(cursor.getLong(idx_date)) +
-                " - " + cursor.getString(idx_short_desc) +
+        return ForecastUtil.formatDate(cursor.getLong(ForecastFragment.COL_WEATHER_DATE)) +
+                " - " + cursor.getString(ForecastFragment.COL_WEATHER_DESC) +
                 " - " + highAndLow;
     }
 
