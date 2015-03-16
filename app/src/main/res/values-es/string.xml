@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- string action menu -->
+    <string name="action_settings">Configuración</string>
+    <string name="action_refresh">Refrescar</string>
+    <string name="action_share">Compartir</string>
+
+    <!-- Date label when displaying today's weather forecast [CHAR LIMIT=20] -->
+    <string name="today">Hoy</string>
+
+    <!-- Date label when displaying tomorrow's weather forecast [CHAR LIMIT=20] -->
+    <string name="tomorrow">Mañana</string>
+</resources>
