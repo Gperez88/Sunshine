@@ -21,6 +21,7 @@ import com.example.android.sunshine.app.R;
 import com.example.android.sunshine.app.activities.DetailActivity;
 import com.example.android.sunshine.app.adapters.ForecastAdapter;
 import com.example.android.sunshine.app.data.WeatherContract;
+import com.example.android.sunshine.app.tasks.FetchWeatherTask;
 import com.example.android.sunshine.app.utils.ForecastUtil;
 
 /**
@@ -110,6 +111,7 @@ public class ForecastFragment extends Fragment implements LoaderManager.LoaderCa
 
     // since we read the location when we create the loader, all we need to do is restart things
     public void onLocationChanged( ) {
+        updateWeather();
         getLoaderManager().restartLoader(FORECAST_LOADER, null, this);
     }
 
@@ -128,6 +130,7 @@ public class ForecastFragment extends Fragment implements LoaderManager.LoaderCa
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_refresh) {
+            updateWeather();
 
             return true;
         }
@@ -162,5 +165,10 @@ public class ForecastFragment extends Fragment implements LoaderManager.LoaderCa
         mForecastAdapter.swapCursor(null);
     }
 
+    private void updateWeather() {
+        FetchWeatherTask weatherTask = new FetchWeatherTask(getActivity());
+        String location = ForecastUtil.getPreferredLocation(getActivity());
+        weatherTask.execute(location);
+    }
 
 }
