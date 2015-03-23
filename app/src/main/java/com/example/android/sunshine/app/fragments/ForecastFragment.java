@@ -1,5 +1,6 @@
 package com.example.android.sunshine.app.fragments;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -19,13 +20,13 @@ import android.widget.ListView;
 import com.example.android.sunshine.app.R;
 import com.example.android.sunshine.app.adapters.ForecastAdapter;
 import com.example.android.sunshine.app.data.WeatherContract;
-import com.example.android.sunshine.app.tasks.FetchWeatherTask;
+import com.example.android.sunshine.app.services.SunshineService;
 import com.example.android.sunshine.app.utils.ForecastUtil;
 
 /**
  * Created by GPEREZ on 2/4/2015.
  */
-public class ForecastFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor>{
+public class ForecastFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
     private ForecastAdapter mForecastAdapter;
 
     private ListView mListView;
@@ -162,15 +163,16 @@ public class ForecastFragment extends Fragment implements LoaderManager.LoaderCa
     }
 
     // since we read the location when we create the loader, all we need to do is restart things
-    public void onLocationChanged( ) {
+    public void onLocationChanged() {
         updateWeather();
         getLoaderManager().restartLoader(FORECAST_LOADER, null, this);
     }
 
     private void updateWeather() {
-        FetchWeatherTask weatherTask = new FetchWeatherTask(getActivity());
-        String location = ForecastUtil.getPreferredLocation(getActivity());
-        weatherTask.execute(location);
+        Intent intent = new Intent(getActivity(), SunshineService.class);
+        intent.putExtra(SunshineService.LOCATION_QUERY_EXTRA,
+                ForecastUtil.getPreferredLocation(getActivity()));
+        getActivity().startService(intent);
     }
 
     @Override
