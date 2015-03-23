@@ -8,7 +8,7 @@
         android:drawable="@color/primary_light"/>
 
     <item android:state_selected="true"
-        android:drawable="@color/primary_light"/>
+        android:drawable="@android:color/transparent"/>
 
     <item android:drawable="@color/primary" />
 </selector>
